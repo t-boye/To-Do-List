@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="My To-Do List">
+    <meta name="author" content="Emmanuel Tete Boye">
+    <title>My To-Do List</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <header>
+        <h1>My To-Do List</h1>
+    </header>
+
+    <form>
+        <input type="text" id="new-task-input" placeholder="Add new task...">
+        <button type="submit" id="add-task-button">Add</button>
+    </form>
+
+    <ul id="task-list">
+        <li id="task-1" data-priority="high">
+            <input type="checkbox" id="task1" class="task-checkbox">
+            <label for="task1" class="task-label">Finish project report</label>
+            <div> <button class="delete">Delete</button>
+                <button class="edit">Edit</button>
+            </div>
+        </li>
+        <li id="task-2" data-priority="medium">
+            <input type="checkbox" id="task2" class="task-checkbox">
+            <label for="task2" class="task-label">Buy groceries</label>
+            <div> <button class="delete">Delete</button>
+                <button class="edit">Edit</button>
+            </div>
+        </li>
+        <li id="task-3" data-priority="low">
+            <input type="checkbox" id="task3" class="task-checkbox">
+            <label for="task3" class="task-label">Call mom</label>
+            <div><button class="delete">Delete</button>
+                <button class="edit">Edit</button></div>
+        </li>
+        <li>
+            <input type="checkbox" id="task6" class="task-checkbox">
+            <label for="task6">Schedule doctor's appointment</label>
+            <div> <button class="delete">Delete</button>
+                <button class="edit">Edit</button>
+            </div>
+        </li>
+        <li>
+            <input type="checkbox" id="task7" class="task-checkbox">
+            <label for="task7">Go for a 30-minute jog</label>
+            <div> <button class="delete">Delete</button>
+                <button class="edit">Edit</button>
+            </div>
+        </li>
+        <li>
+            <input type="checkbox" id="task8" class="task-checkbox">
+            <label for="task8">Research new job opportunities</label>
+            <div><button class="delete">Delete</button>
+                <button class="edit">Edit</button>
+            </div>
+        </li>
+        <!-- Add more tasks here -->
+    </ul>
+
+    <footer>
+        <div class="no-tasks">No tasks to show</div>
+        <span class="total-count"></span>
+        <span class="completed-count"></span>
+        <span class="remaining-count"></span>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+
+</html>

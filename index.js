@@ -32,24 +32,43 @@ form.addEventListener('submit', (event) => {
 
         const editButton = newTask.querySelector('.edit');
         editButton.addEventListener('click', () => {
-            const label = newTask.querySelector('.task-label');
-            const input = document.createElement('input');
-            input.type = 'text';
-            input.value = label.innerText;
-            newTask.insertBefore(input, label);
-            label.remove();
-            input.focus();
-            editButton.innerText = 'Save';
-            editButton.addEventListener('click', () => {
-                const newTaskText = input.value.trim();
-                if (newTaskText !== '') {
-                    label.innerText = newTaskText;
-                }
-                input.remove();
-                editButton.innerText = 'Edit';
-                updateTaskCount();
-            }, { once: true });
+          const label = newTask.querySelector('.task-label');
+          const input = document.createElement('input');
+          input.type = 'text';
+          input.value = label.innerText;
+          newTask.insertBefore(input, label);
+          label.remove();
+          input.focus();
+          editButton.innerText = 'Save';
+        
+          editButton.addEventListener('click', () => {
+            const newTaskText = input.value.trim();
+            if (newTaskText !== '') {
+              // Display the newly edited task:
+              const newTaskElement = document.createElement('li');
+              newTaskElement.innerHTML = `
+                <input type="checkbox" class="task-checkbox">
+                <label class="task-label">${newTaskText}</label>
+                <div>
+                  <button class="delete">Delete</button>
+                  <button class="edit">Edit</button>
+                </div>
+              `;
+              // Insert it before the current task element:
+              newTask.parentNode.insertBefore(newTaskElement, newTask);
+        
+              // Cancel the old task:
+              newTask.remove();
+        
+              // Update task counts:
+              updateTaskCount();
+            }
+        
+            input.remove();
+            editButton.innerText = 'Edit';
+          }, { once: true });
         });
+        
 
         taskList.appendChild(newTask);
         taskInput.value = '';
@@ -80,6 +99,7 @@ function addTask(event) {
     taskList.appendChild(taskElement);
 
     taskElement.querySelector(".task-checkbox").focus();
+    
 
     tasks.push({
         id: taskElement.getAttribute("data-task-id"),
